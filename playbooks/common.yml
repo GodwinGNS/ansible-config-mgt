@@ -10,14 +10,14 @@
 
     - name: create a directory
       file:
-        path: /path/to/directory
+        path: /folder
         state: directory
         mode: "0755"
 
     - name: create a file
       copy:
         content: "adding a file content" 
-        dest: /path/to/directory/ansible.txt
+        dest: /folder/ansible.txt
         ecmode: '0644'
   
     - name: set time zone to UTC
@@ -44,14 +44,14 @@
 
     - name: create a directory
       file:
-        path: /path/to/directory
+        path: /folder
         state: directory
         mode: "0755"
 
     - name: create a file
       copy:
         content: "adding a file content" 
-        dest: /path/to/directory/ansible.txt
+        dest: /folder/ansible.txt
         mode: '0644'
     
     - name: set time zone to UTC
