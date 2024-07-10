@@ -18,8 +18,8 @@
       copy:
         content: "adding a file content" 
         dest: /folder/ansible.txt
-        ecmode: '0644'
-  
+        mode: '0644'
+
     - name: set time zone to UTC
       timezone:
          name: UTC
@@ -62,4 +62,4 @@
       shell: |
         #!/bin/bash
         echo "run and test this shell script"
-        echo "Executed on $(date)" >> /path/to/directory/my_script.txt
+        echo "Executed on $(date)" >> /folder/my_script.txt
