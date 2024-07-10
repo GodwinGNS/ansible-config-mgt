@@ -15,10 +15,10 @@
         mode: "0755"
 
     - name: create a file
-        copy:
-          content: "adding a file content" 
-            dest: /path/to/directory/ansible.txt
-            mode: '0644'
+      copy:
+        content: "adding a file content" 
+        dest: /path/to/directory/ansible.txt
+        ecmode: '0644'
   
     - name: set time zone to UTC
       timezone:
