@@ -1,12 +1,19 @@
 ---
-- name: update web, nfs and db servers
+- name: Update web, nfs, and db servers
   hosts: webservers, nfs, db
   become: yes
   tasks:
-    - name: ensure wireshark is at the latest version
+    - name: ensure wireshark is at the latest version on RedHat/CentOS
       yum:
         name: wireshark
         state: latest
+      when: ansible_facts['os_family'] == 'RedHat'
+
+    - name: ensure wireshark is at the latest version on Debian/Ubuntu
+      apt:
+        name: wireshark
+        state: latest
+      when: ansible_facts['os_family'] == 'Debian'
 
     - name: create a directory
       file:
@@ -22,25 +29,29 @@
 
     - name: set time zone to UTC
       timezone:
-         name: UTC
+        name: UTC
 
     - name: run a shell script
       shell: |
         #!/bin/bash
         echo "run and test this shell script"
+      args:
+        creates: /folder/my_script.txt
 
-- name: update LB and db server
+- name: Update LB and db server
   hosts: lb, db
   become: yes
   tasks:
     - name: Update apt repo
-      apt: 
+      apt:
         update_cache: yes
+      when: ansible_facts['os_family'] == 'Debian'
 
-    - name: ensure wireshark is at the latest version
+    - name: ensure wireshark is at the latest version on Debian/Ubuntu
       apt:
         name: wireshark
         state: latest
+      when: ansible_facts['os_family'] == 'Debian'
 
     - name: create a directory
       file:
@@ -53,13 +64,15 @@
         content: "adding a file content" 
         dest: /folder/ansible.txt
         mode: '0644'
-    
+
     - name: set time zone to UTC
       timezone:
-         name: UTC
+        name: UTC
 
     - name: run a shell script
       shell: |
         #!/bin/bash
         echo "run and test this shell script"
         echo "Executed on $(date)" >> /folder/my_script.txt
+      args:
+        creates: /folder/my_script.txt
