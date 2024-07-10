@@ -1,0 +1,65 @@
+---
+- name: update web, nfs and db servers
+  hosts: webservers, nfs, db
+  become: yes
+  tasks:
+    - name: ensure wireshark is at the latest version
+      yum:
+        name: wireshark
+        state: latest
+
+    - name: create a directory
+      file:
+        path: /path/to/directory
+        state: directory
+        mode: "0755"
+
+    - name: create a file
+        copy:
+          content: "adding a file content" 
+            dest: /path/to/directory/ansible.txt
+            mode: '0644'
+  
+    - name: set time zone to UTC
+      timezone:
+         name: UTC
+
+    - name: run a shell script
+      shell: |
+        #!/bin/bash
+        echo "run and test this shell script"
+
+- name: update LB and db server
+  hosts: lb, db
+  become: yes
+  tasks:
+    - name: Update apt repo
+      apt: 
+        update_cache: yes
+
+    - name: ensure wireshark is at the latest version
+      apt:
+        name: wireshark
+        state: latest
+
+    - name: create a directory
+      file:
+        path: /path/to/directory
+        state: directory
+        mode: "0755"
+
+    - name: create a file
+        copy:
+          content: "adding a file content" 
+            dest: /path/to/directory/ansible.txt
+            mode: '0644'
+    
+    - name: set time zone to UTC
+      timezone:
+         name: UTC
+
+    - name: run a shell script
+      shell: |
+        #!/bin/bash
+        echo "run and test this shell script"
+        echo "Executed on $(date)" >> /path/to/directory/my_script.txt
