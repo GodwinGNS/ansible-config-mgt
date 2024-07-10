@@ -29,8 +29,8 @@
         #!/bin/bash
         echo "run and test this shell script"
 
-- name: update LB server
-  hosts: lb
+- name: update LB and db server
+  hosts: lb, db
   become: yes
   tasks:
     - name: Update apt repo
