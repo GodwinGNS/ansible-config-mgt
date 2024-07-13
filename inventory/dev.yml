@@ -1,16 +1,14 @@
 [nfs]
-172.31.97.186 ansible_ssh_user=ec2-user
+172.31.32.100 ansible_ssh_user=ec2-user
 
 [webservers]
-172.31.152.160 ansible_ssh_user=ec2-user
-172.31.220.33 ansible_ssh_user=ec2-user
+172.31.179.184 ansible_ssh_user=ec2-user
+172.31.175.83 ansible_ssh_user=ec2-user
 
 [db]
-172.31.140.178 ansible_ssh_user=ubuntu
+172.31.165.95 ansible_ssh_user=ubuntu
 
 [lb]
-172.31.70.153 ansible_ssh_user=ubuntu
+172.31.117.71 ansible_ssh_user=ubuntu
 
-[all:vars]
-ansible_user=ec2-user
-ansible_ssh_private_key_file=/path/to/directory/dev.pem
+
