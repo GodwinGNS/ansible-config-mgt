@@ -45,7 +45,7 @@
     - name: Update apt repo
       apt:
         update_cache: yes
-      when: ansible_facts['os_family'] == 'Debian'
+      when: ansible_facts['os_family1'] == 'Debian'
 
     - name: ensure wireshark is at the latest version on Ubuntu
       apt:
