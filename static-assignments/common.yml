@@ -1,6 +1,6 @@
 ---
 - name: Update web, nfs, and db servers
-  hosts: webservers, nfs, 
+  hosts: webservers, nfs,
   become: yes
   tasks:
     - name: ensure wireshark is at the latest version on RedHat/CentOS
