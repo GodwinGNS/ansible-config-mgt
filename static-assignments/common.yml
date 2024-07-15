@@ -1,6 +1,6 @@
 ---
 - name: Update web, nfs, and db servers
-  hosts: webservers, nfs, db
+  hosts: webservers, nfs, 
   become: yes
   tasks:
     - name: ensure wireshark is at the latest version on RedHat/CentOS
@@ -47,7 +47,7 @@
         update_cache: yes
       when: ansible_facts['os_family'] == 'Debian'
 
-    - name: ensure wireshark is at the latest version on Debian/Ubuntu
+    - name: ensure wireshark is at the latest version on Ubuntu
       apt:
         name: wireshark
         state: latest
