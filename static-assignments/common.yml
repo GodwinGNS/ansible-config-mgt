@@ -7,13 +7,6 @@
       yum:
         name: wireshark
         state: latest
-    
-
-    # - name: ensure wireshark is at the latest version on Debian/Ubuntu
-    #   apt:
-    #     name: wireshark
-    #     state: latest
-      
 
     - name: create a directory
       file:
