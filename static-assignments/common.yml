@@ -1,5 +1,5 @@
 ---
-- name: Update web, nfs
+- name: Update web, nfs, lb, db server
   hosts: webservers, nfs
   become: yes
   tasks:
@@ -9,10 +9,10 @@
         state: latest
     
 
-    - name: ensure wireshark is at the latest version on Debian/Ubuntu
-      apt:
-        name: wireshark
-        state: latest
+    # - name: ensure wireshark is at the latest version on Debian/Ubuntu
+    #   apt:
+    #     name: wireshark
+    #     state: latest
       
 
     - name: create a directory
@@ -39,7 +39,7 @@
         creates: /folder/my_script.txt
 
 - name: Update LB and db server
-  hosts: lb, db
+  hosts: db, lb
   become: yes
   tasks:
     - name: Update apt repo
