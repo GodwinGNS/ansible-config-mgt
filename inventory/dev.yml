@@ -8,8 +8,8 @@
  [db]
  172.31.151.117 ansible_ssh_user=ubuntu
 
-# [lb]
-# 172.31.117.71 ansible_ssh_user=ubuntu
+ [lb]
+ 172.31.92.81 ansible_ssh_user=ubuntu
 
 
 
