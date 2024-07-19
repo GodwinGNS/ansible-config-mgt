@@ -1,5 +1,6 @@
 ---
-- hosts: all
+- name: Main site playbook
+  hosts: all
+  become: yes
 
 - import_playbook: ../static-assignments/uat-webservers.yml
-

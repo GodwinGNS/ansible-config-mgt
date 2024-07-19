@@ -1,4 +1,7 @@
 ---
-- hosts: uat-webservers
+- name: Webserver playbook
+  hosts: uat-webservers
   roles:
-     - webserver
+    - webserver
+
+
