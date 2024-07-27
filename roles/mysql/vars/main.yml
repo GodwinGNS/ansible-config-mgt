@@ -1,0 +1,10 @@
+         mysql_root_password:
+         mysql_databases:
+           - name: ( input your required db name )
+             encoding: latin1
+             collation: latin1_general_ci
+         mysql_users:
+           - name:  ( include your required db user name )
+             host: "( include the required subnet cidr ip address of your webservers )"
+             password: ( include your required password for the db )
+             priv: "(include the added db name).*:ALL"
