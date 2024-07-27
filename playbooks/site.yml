@@ -16,3 +16,5 @@
 -  hosts: webservers
 - name: Webserver assignment
   import_playbook: ../static-assignments/webservers.yml
+
+- import_playbook: ../static-assignments/db-servers.yml
