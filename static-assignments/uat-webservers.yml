@@ -1,6 +1,5 @@
 ---
-- name: Webserver playbook
-  hosts: uat-webservers
+- hosts: todo
   roles:
     - webserver
 
