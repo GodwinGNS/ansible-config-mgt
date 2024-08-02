@@ -19,7 +19,7 @@
 
 
 ---
-- name: Include dynamic variables 
+  name: Include dynamic variables 
   hosts: all
   tasks:
   import_playbook: ../static-assignments/common.yml 
