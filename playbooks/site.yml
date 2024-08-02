@@ -28,8 +28,10 @@
 
 - hosts: webservers
   name: Webserver assignment
-  import_playbook: ../static-assignments/webservers.yml
-  import_playbook: ../static-assignments/common.yml 
+  
+- import_playbook: ../static-assignments/webservers.yml
+  
+- import_playbook: ../static-assignments/common.yml 
 
 - hosts: lb
   import_playbook: ../static-assignments/loadbalancers.yml
