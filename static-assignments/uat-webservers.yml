@@ -1,7 +1,11 @@
+#---
+#- hosts: todo
+# roles:
+#   - webserver
+
 ---
-- name: Webserver playbook
-  hosts: uat-webservers
+- hosts: uat-webservers
+  remote_user: ec2-user
+  become: true
   roles:
     - webserver
-
-
