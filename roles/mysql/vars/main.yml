@@ -1,6 +1,6 @@
 mysql_root_password:
 mysql_databases:
-  - name: Godwin
+  - name: db-server
     encoding: latin1
     collation: latin1_general_ci
 mysql_users:

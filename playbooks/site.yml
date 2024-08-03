@@ -1,5 +1,5 @@
 ---
-- name: Include dynamic variables 
+- name: Include dynamic variables
   hosts: all
   tasks:
     - include-vars: ../dynamic-assignment/env-vars.yml
@@ -8,7 +8,6 @@
 
 - hosts: webservers
   name: Webserver assignment
-  
 - import_playbook: ../static-assignments/uat-webservers.yml
   
 #- import_playbook: ../static-assignments/common.yml 
