@@ -1,43 +1,27 @@
 ---
-- name: install apache
-  remote_user: ec2-user
-  become: true
+- name: Install Apache
   ansible.builtin.yum:
-    name: "httpd"
+    name: httpd
     state: present
 
-- name: install git
-  remote_user: ec2-user
-  become: true
-  become_user: root
+- name: Install Git
   ansible.builtin.yum:
-    name: "git"
+    name: git
     state: present
 
-- name: install EPEL release
-  remote_user: ec2-user
-  become: true
-  become_user: root
+- name: Install EPEL release
   ansible.builtin.command:
     cmd: sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm -y
 
 - name: Install dnf-utils and Remi repository
-  remote_user: ec2-user
-  become: true
-  become_user: root
   ansible.builtin.command:
     cmd: sudo dnf install dnf-utils http://rpms.remirepo.net/enterprise/remi-release-9.rpm -y
 
-- name: Rest PHP module
-  remote_user: ec2-user
-  become: true
-  become_user: root
+- name: Reset PHP module
   ansible.builtin.command:
     cmd: sudo module reset php -y
 
 - name: Install PHP and extensions
-  remote_user: ec2-user
-  become_user: root
   ansible.builtin.yum:
     name:
       - php
@@ -45,64 +29,50 @@
       - php-gd
       - php-curl
       - php-mysqlnd
+      - php-common
+      - php-mbstring
+      - php-intl
+      - php-xml
+      - php-fpm
+      - php-json
+    enablerepo: remi-7.4
     state: present
 
-- name: Install MYSQL Client
-  remote_user: ec2-user
-  become_user: root
+- name: Install MySQL Client
   ansible.builtin.yum:
-    name: "mysql"
+    name: mysql
     state: present
 
 - name: Start PHP-FPM Service
-  remote_user: ec2-user
-  become: true
-  become_user: ec2-user
   ansible.builtin.service:
     name: php-fpm
     state: started
 
 - name: Enable PHP-FPM Service
-  remote_user: ec2-user
-  become: true
-  become_user: root
-  ansible.builtin.command:
+  ansible.builtin.systemd:
     name: php-fpm
     enabled: true
 
 - name: Set SELinux boolean for httpd_execmem
-  remote_user: ec2-user
-  become: true
-  become_user: root
   ansible.builtin.command:
     cmd: sudo setsebool -p httpd_execmem 1
 
-- name: clone a repo
-  remote_user: ec2-user
-  become: true
+- name: Clone a repository
   ansible.builtin.git:
     repo: https://github.com/GodwinGNS/tooling.git
     dest: /var/www/html
     force: yes
 
-- name: copy html content to one level up
-  become: true
-  command: cp -r /var/www/html/html/ /var/www/
+- name: Copy HTML content to one level up
+  ansible.builtin.command:
+    cmd: cp -r /var/www/html/html/ /var/www/
 
-- name: Start service httpd, if not started
-  remote_user: ec2-user
-  become: true
-  become_user: root
+- name: Start Apache service if not started
   ansible.builtin.service:
     name: httpd
     state: started
 
-- name: recursively remove /var/www/html/html/ directory
-  remote_user: ec2-user
-  become: true
-  become_user: root
+- name: Recursively remove /var/www/html/html/ directory
   ansible.builtin.file:
     path: /var/www/html/html
     state: absent
-
-    
