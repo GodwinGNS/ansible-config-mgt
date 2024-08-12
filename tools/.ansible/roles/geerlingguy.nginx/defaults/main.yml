@@ -8,7 +8,7 @@ nginx_yum_repo_enabled: true
 # Used only for Suse installation, enables source Nginx repo.
 nginx_zypper_repo_enabled: true
 
-# Use the official Nginx PPA for Ubuntu, and the version to use if so.
+# Use the official Nginx PPA for Ubuntu, and the version to use if so.////
 nginx_ppa_use: false
 nginx_ppa_version: stable
 
