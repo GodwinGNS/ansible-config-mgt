@@ -32,10 +32,9 @@ pipeline {
             steps {
                 script {
                     def hosts = [
-                        [ip: '172.31.30.46', user: 'ec2-user'],
-                        [ip: '172.31.25.209', user: 'ec2-user'],
-                        [ip: '172.31.26.108', user: 'ubuntu'],
-                        [ip: '172.31.24.250', user: 'ubuntu']
+                        [ip: '172.31.157.246', user: 'ec2-user'],
+                        [ip: '172.31.145.199', user: 'ubuntu'],
+                        [ip: '172.31.105.81', user: 'ubuntu']
                     ]
                     for (host in hosts) {
                         sshagent(['private-key']) {
