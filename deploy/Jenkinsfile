@@ -37,11 +37,11 @@ pipeline {
         stage('Test SSH Connections') {
             steps {
                 script {
-                    // def hosts = [
-                    //         ip: '172.31.157.246', user: 'ec2-user',
-                    //         ip: '172.31.145.199', user: 'ubuntu',
-                    //         ip: '172.31.105.81', user: 'ubuntu'
-                    // ]
+                    def hosts = [
+                            ip: '172.31.118.13', user: 'ec2-user',
+                            ip: '172.31.82.43', user: 'ubuntu',
+                            ip: '172.31.104.185', user: 'ubuntu'
+                    ]
                     for (host in hosts) {
                         sshagent(['private-key']) {
                             sh "ssh -o StrictHostKeyChecking=no -i /home/ubuntu/.ssh/dev.pem ${host.user}@${host.ip} exit"
