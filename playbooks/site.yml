@@ -9,8 +9,6 @@
   name: Webserver assignment
 - import_playbook: ../static-assignments/uat-webservers.yml
 
-#- import_playbook: ../static-assignments/common.yml
-
 - import_playbook: ../static-assignments/db-servers.yml
 
 - include-vars: ../dynamic-assignment/env-vars.yml
