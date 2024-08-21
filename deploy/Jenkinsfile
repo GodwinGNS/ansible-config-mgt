@@ -9,8 +9,8 @@ pipeline {
 
     stages {
         stage('Initial Cleanup') {
-            steps {
-                cleanWs()
+            dir("${WORKSPACE}") {
+              deleteDir()
             }
         }
 
@@ -76,6 +76,14 @@ pipeline {
                     deleteDirs: true
                 )
             }
+        }
+       
+        parameters {
+            string(
+                name: 'inventory',
+                defaultValue: 'dev',
+                description: 'This is the inventory file for the environment to deploy configuration'
+            )
         }
     }
 }
