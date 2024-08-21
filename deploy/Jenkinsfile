@@ -54,14 +54,7 @@ pipeline {
         stage('Run Ansible Playbook') {
             steps {
                 sshagent(['private-key']) {
-                    ansiblePlaybook(
-                        become: true,
-                        credentialsId: 'private-key',
-                        disableHostKeyChecking: true,
-                        installation: 'ansible',
-                        inventory: "${WORKSPACE}/inventory/dev.yml",
-                        playbook: "${WORKSPACE}/playbooks/site.yml"
-                    )
+                   ansiblePlaybook become: true, colorized: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory/dev.yml', playbook: 'playbooks/site.yml', vaultTmpPath: ''
                 }
           }
         }
