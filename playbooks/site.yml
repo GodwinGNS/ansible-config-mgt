@@ -1,9 +1,7 @@
 ---
 - name: Include dynamic variables
-  hosts: all
-  tasks:
-    tags:
-      - always
+  tags:
+    - always
 
 - hosts: webservers
   name: Webserver assignment
