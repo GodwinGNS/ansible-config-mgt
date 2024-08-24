@@ -64,7 +64,7 @@ pipeline {
         stage('Run Ansible Playbook') {
             steps {
                 script {
-                    echo "Inventory file: ${WORKSPACE}/inventory/${params.inventory}.yml"
+                    echo "Inventory file: ${WORKSPACE}/inventory/dev"
                     if (fileExists("${WORKSPACE}/inventory/${params.inventory}.yml")) {
                         sshagent(['private-key']) {
                            ansiblePlaybook(
