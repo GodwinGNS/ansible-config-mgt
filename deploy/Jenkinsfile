@@ -1,3 +1,5 @@
+
+
 pipeline {
   agent any
 
@@ -16,7 +18,7 @@ pipeline {
 
       stage('Checkout SCM') {
          steps{
-            git branch: 'feature/jenkinspipeline-stages', url: 'https://github.com/GodwinGNS/ansible-config-mgt.git'
+            git branch: 'main', url: 'https://github.com/GodwinGNS/ansible-config-mgt.git'
          }
        }
 
