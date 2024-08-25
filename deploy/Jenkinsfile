@@ -31,28 +31,7 @@ pipeline {
         sh 'sed -i "3 a roles_path=${WORKSPACE}/roles" ${WORKSPACE}/deploy/ansible.cfg'
       }
     }
-
-    stage('Test SSH Connections') {
-      steps {
-        script {
-          def hosts = [
-            //  [group: 'sonarqube', ip: '172.31.20.50', user: 'ubuntu']
-             [group: 'nginx', ip: '172.31.100.206', user: 'ec2-user'],
-             [group: 'todo', ip: '172.31.57.157', user: 'ec2-user'],
-            //  [group: 'nginx', ip: '172.31.100.206', user: 'ubuntu'],
-            // [group: 'db', ip: '172.31.24.250', user: 'ubuntu']
-            // [group: 'artifactory', ip: '172.31.30.88', user: 'ubuntu'],
-            //  [group: 'wireshark', ip: '172.31.17.28', user: 'ubuntu']
-          ]
-          for (host in hosts) {
-            sshagent(['private-key']) {
-              sh "ssh -o StrictHostKeyChecking=no -i /home/ubuntu/.ssh/dev.pem ${host.user}@${host.ip} exit"
-            }
-          }
-        }
-      }
-    }
-
+    
     stage('Run Ansible playbook') {
         steps {
            ansiblePlaybook colorized: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory/dev.yml', playbook: 'playbooks/site.yml', vaultTmpPath: ''
