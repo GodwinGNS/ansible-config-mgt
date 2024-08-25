@@ -80,7 +80,7 @@
     marker: "# {mark} ANSIBLE MANAGED BLOCK"
     insertbefore: "</VirtualHost>"
   notify: restart apache
-  become: yes  
+  become: yes
 
 - name: Remove default vhost in sites-enabled.
   file:
