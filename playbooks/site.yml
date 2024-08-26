@@ -7,18 +7,18 @@
       tags:
         - always
 
-- import_playbook: ../static-assignments/db-servers.yml
-  tags:
-    - db
+# - import_playbook: ../static-assignments/db-servers.yml
+#   tags:
+#     - db
 
-- import_playbook: ../static-assignments/uat-webservers.yml
-  tags:
-    - webserver
+# - import_playbook: ../static-assignments/uat-webservers.yml
+#   tags:
+#     - webserver
 
-- import_playbook: ../static-assignments/loadbalancers.yml
-  when: load_balancer_is_required
-  tags:
-    - loadbalancer
+# - import_playbook: ../static-assignments/loadbalancers.yml
+#   when: load_balancer_is_required
+#   tags:
+#     - loadbalancer
 # - import_playbook: ../static-assignments/artifactory.yml
 #   tags:
 #     - artifactory
@@ -47,17 +47,17 @@
 
 #   #########################
 
-# - hosts: db
-# - name: database assignment
-#   import_playbook: ../static-assignments/database.yml
+- hosts: db
+- name: database assignment
+  import_playbook: ../static-assignments/database.yml
 
-# - hosts: nginx
-# - name: nginx assignment
-#   import_playbook: ../static-assignments/nginx.yml
+- hosts: nginx
+- name: nginx assignment
+  import_playbook: ../static-assignments/nginx.yml
 
-# - hosts: todo
-# - name: Deploy the todo application
-#   import_playbook: ../static-assignments/deployment.yml
+- hosts: todo
+- name: Deploy the todo application
+  import_playbook: ../static-assignments/deployment.yml
 # # - hosts: artifactory
 # # - name: artifactory assignment
 # #   import_playbook: ../static-assignments/artifactory.yml
