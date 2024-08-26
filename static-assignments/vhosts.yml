@@ -1,5 +1,5 @@
 ---
-- hosts: db
+- hosts: nginx
   become: yes
   vars_files:
     - nginx_vhosts
