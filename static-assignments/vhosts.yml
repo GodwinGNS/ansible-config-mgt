@@ -1,7 +1,0 @@
----
-- hosts: nginx
-  become: yes
-  vars_files:
-    - nginx_vhosts
-  roles:
-    - role: nginx

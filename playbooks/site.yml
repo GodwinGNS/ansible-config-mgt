@@ -7,55 +7,26 @@
       tags:
         - always
 
-# - import_playbook: ../static-assignments/db-servers.yml
-#   tags:
-#     - db
+- import_playbook: ../static-assignments/db-servers.yml
+  tags:
+    - db
 
-# - import_playbook: ../static-assignments/uat-webservers.yml
-#   tags:
-#     - webserver
+- import_playbook: ../static-assignments/uat-webservers.yml
+  tags:
+    - webserver
 
-# - import_playbook: ../static-assignments/loadbalancers.yml
-#   when: load_balancer_is_required
-#   tags:
-#     - loadbalancer
+- import_playbook: ../static-assignments/loadbalancers.yml
+  when: load_balancer_is_required
+  tags:
+    - loadbalancer
+
+- import_playbook: ../static-assignments/deployment.yml
+  tags:
+    - deployment
 # - import_playbook: ../static-assignments/artifactory.yml
 #   tags:
 #     - artifactory
 
-# - import_playbook: ../static-assignments/deployment.yml
-#   tags:
-#    - deployment
-
 # - import_playbook: ../static-assignments/sonarqube.yml
 
 # - import_playbook: ../static-assignments/wireshark.yml
-# - name: Include dynamic variables
-#   include_vars: ../dynamic-assignment/env-vars.yml
-#   tags:
-#     - always
-
-# - hosts: webservers
-#   name: Webserver assignment
-#   tasks:
-#     - import_playbook: ../static-assignments/uat-webservers.yml
-
-# - import_playbook: ../static-assignments/db-servers.yml
-
-- import_playbook: ../static-assignments/loadbalancers.yml
-  when: load_balancer_is_required
-
-- hosts: db
-- name: database assignment
-  import_playbook: ../static-assignments/database.yml
-
-- hosts: nginx
-- name: nginx assignment
-  import_playbook: ../static-assignments/nginx.yml
-
-- hosts: todo
-- name: Deploy the todo application
-  import_playbook: ../static-assignments/deployment.yml
-# # - hosts: artifactory
-# # - name: artifactory assignment
-# #   import_playbook: ../static-assignments/artifactory.yml
