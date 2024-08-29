@@ -32,26 +32,26 @@ pipeline {
       }
     }
 
-    stage('Test SSH Connections') {
-      steps {
-        script {
-          def hosts = [
-            // [group: 'sonarqube', ip: '172.31.20.50', user: 'ubuntu']
-            [group: 'tooling', ip: '172.31.87.80', user: 'ec2-user'],
-            [group: 'todo', ip: '172.31.111.1', user: 'ec2-user'],
-            [group: 'nginx', ip: '172.31.175.129', user: 'ubuntu'],
-            [group: 'db', ip: '172.31.23.137', user: 'ubuntu']
-            // [group: 'artifactory', ip: '172.31.30.88', user: 'ubuntu'],
-            // [group: 'wireshark', ip: '172.31.17.28', user: 'ubuntu']
-          ]
-          for (host in hosts) {
-            sshagent(['private-key']) {
-              sh "ssh -o StrictHostKeyChecking=no -i /home/ubuntu/.ssh/dev.pem ${host.user}@${host.ip} exit"
-            }
-          }
-        }
-      }
-    }
+    // stage('Test SSH Connections') {
+    //   steps {
+    //     script {
+    //       def hosts = [
+    //         // [group: 'sonarqube', ip: '172.31.20.50', user: 'ubuntu']
+    //         [group: 'tooling', ip: '172.31.87.80', user: 'ec2-user'],
+    //         [group: 'todo', ip: '172.31.111.1', user: 'ec2-user'],
+    //         [group: 'nginx', ip: '172.31.175.129', user: 'ubuntu'],
+    //         [group: 'db', ip: '172.31.23.137', user: 'ubuntu']
+    //         // [group: 'artifactory', ip: '172.31.30.88', user: 'ubuntu'],
+    //         // [group: 'wireshark', ip: '172.31.17.28', user: 'ubuntu']
+    //       ]
+    //       for (host in hosts) {
+    //         sshagent(['private-key']) {
+    //           sh "ssh -o StrictHostKeyChecking=no -i /home/ubuntu/.ssh/dev.pem ${host.user}@${host.ip} exit"
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
 
     stage('Run Ansible playbook') {
       steps {
