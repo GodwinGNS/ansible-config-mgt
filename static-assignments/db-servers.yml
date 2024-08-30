@@ -1,8 +1,14 @@
+# ---
+# - hosts: db
+#   become: yes
+#   vars_files:
+#     - vars/main.yml
+#   roles:
+#   role:
+#     - mysql
+
 ---
 - hosts: db
-  become: yes
-  vars_files:
-    - vars/main.yml
+  become: true
   roles:
-  role:
-    - mysql
+    - role: mysql
