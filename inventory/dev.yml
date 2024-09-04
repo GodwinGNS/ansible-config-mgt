@@ -3,7 +3,7 @@
 172.31.210.199 ansible_ssh_user=ec2-user
 
 [nginx]
-172.31.26.108 ansible_ssh_user=ubuntu
+172.31.175.129 ansible_ssh_user=ubuntu
 
 [db:vars]
 ansible_user=ubuntu
