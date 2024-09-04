@@ -3,7 +3,7 @@
   hosts: all
   become: yes
   tasks:
-    - include_vars: ../dynamic-assignments/env-vars/uat.yml
+    - include_vars: ../dynamic-assignment/env-vars.yml
       tags:
         - always
 
